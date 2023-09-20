@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Massa Corporal</title>
+    <script>
+        function calcular() {
+            let altura = document.getElementById("Altura").value;
+            let peso = document.getElementById("Peso").value;
+            if (altura == "") {
+                alert("Informe a altura!");
+            } else if (peso == "") {
+                alert("Informe o peso!");
+            } else {    
+                let imc = (Number(peso) / (Number(altura) ** 2)).toFixed(2);
+                document.getElementById("IMC").value = imc;
+
+                if (imc < 17) {
+                    document.getElementById("grauObesidade").value = "Muito abaixo do peso.";
+                    document.getElementById("grauObesidade").style.color = "red";
+                } else if (imc < 18.5) {
+                    document.getElementById("grauObesidade").value = "Abaixo do peso.";
+                    document.getElementById("grauObesidade").style.color = "orange";
+                } else if (imc < 25) {
+                    document.getElementById("grauObesidade").value = "Peso normal.";
+                    document.getElementById("grauObesidade").style.color = "green";
+                } else if (imc < 30) {
+                    document.getElementById("grauObesidade").value = "Acima do peso."
+                    document.getElementById("grauObesidade").style.color = "orange";
+                } else if (imc < 35) {
+                    document.getElementById("grauObesidade").value = "Obesidade grau I";
+                    document.getElementById("grauObesidade").style.color = "red";
+                } else if (imc <= 40) {
+                    document.getElementById("grauObesidade").value = "Obesidade grau II";
+                    document.getElementById("grauObesidade").style.color = "gray";
+                } else {
+                    document.getElementById("grauObesidade").value = "Obesidade grau III";
+                    document.getElementById("grauObesidade").style.color = "black";
+                }
+            }
+        }
+        function limpar() {
+            document.getElementById("Altura").value = "";
+            document.getElementById("Peso").value = "";
+            document.getElementById("IMC").value = "";
+        }
+
+    </script>
+    <style>
+        div, h1{
+            text-align: center;
+            z-index: 2;
+        }
+        body{
+            background-color:aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        Cálculo de IMC
+    </h1>
+
+    <form>
+        <div>
+            <label for="Altura">Altura</label>
+            <input type="number" name="" id="Altura">
+        </div>
+        <div>
+            <label for="Peso">Peso:</label>
+            <input type="number" name="" id="Peso">
+        </div>
+        <div>
+            <label for="IMC">IMC </label>
+            <input type="number" name="" id="IMC" disabled>
+        </div>
+        <div>
+            <label for="grauObesidade">Grau de obesidade:</label>
+            <input type="text" name="" id="grauObesidade" disabled>
+        </div>
+        <div>
+            <input type="button" value="Calcular" onclick="calcular();">
+            <input type="button" value="Limpar" onclick="limpar();">
+        </div>
+    </form>
+</body>
+
+</html>
